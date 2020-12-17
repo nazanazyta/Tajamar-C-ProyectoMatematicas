@@ -1,0 +1,33 @@
+﻿@model List<int>
+
+<h1>CollatzPaco</h1>
+<br />
+@*<h1 style="color:red">@ViewData["numero"]</h1>
+<br />*@
+<div style="float: left; padding: 20px">
+    <ul>
+        @foreach (int num in Model)
+        {
+            <li>
+                @Html.ActionLink(num.ToString(), "CollatzPaco", "Matematicas", new { numero = num })
+            </li>
+        }
+    </ul>
+</div>
+@{
+    List<int> numeroscollatz = ViewData["collatz"] as List<int>;
+
+}
+<div style="float: left; padding: 20px">
+    @* CUANDO TENGAMOS OBJETOS COMPLEJOS DENTRO DE VIEWBAG/VIEWDATA
+        DEBEMOS CONVERTIRLOS A SU TIPO DEFINIDO *@
+    @if (numeroscollatz != null)
+    {
+        <ul>
+            @foreach (int num in numeroscollatz)
+            {
+                <li>@num</li>
+            }
+        </ul>
+    }
+</div>

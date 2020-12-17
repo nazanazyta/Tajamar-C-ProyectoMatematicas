@@ -1,0 +1,24 @@
+﻿<h1>ConjeturaCollatz</h1>
+<br />
+@{
+    Random rn = new Random();
+}
+@for (int i = 1; i <= 10; i++)
+{
+    String num = rn.Next(1, 10).ToString();
+    @Html.ActionLink(num, "ConjeturaCollatz", "Matematicas", new { numero = num });
+    @*<a class="nav-link text-success"
+        asp-controller="Matematicas"
+        asp-action="ConjeturaCollatz"
+        name="num">@rn.Next(1, 10)</a>*@
+    <br />
+}
+@model List<int>
+@if (Model.Count > 0)
+{
+    <h2>Resultado</h2>
+    @foreach (int num in Model)
+    {
+        <h4>@num</h4>
+    }
+}
